@@ -11,9 +11,8 @@ var isValid = function(s) {
     };
 
     for (let char of s) {
-        if (matchingBrackets[char]) {
-            const topElement = stack.length ? stack.pop() : '';
-            if (topElement !== matchingBrackets[char]) {
+        if (char in matchingBrackets) {
+            if (stack.pop() !== matchingBrackets[char]) {
                 return false;
             }
         } else {
@@ -23,3 +22,4 @@ var isValid = function(s) {
 
     return stack.length === 0;
 };
+
